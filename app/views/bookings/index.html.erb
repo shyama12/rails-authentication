@@ -1,0 +1,20 @@
+<% if @bookings.count.zero? %>
+  <p>You do not have any bookings!</p>
+<% else %>
+
+  <div class="">
+  <% @bookings.each do |booking| %>
+    <div class="card mb-5 d-flex flex-row" style="height: 18rem; overflow: hidden;">
+      <div class="card-image border m-2">
+        <%= cl_image_tag booking.book.photo.key, class: "h-100 w-100", style: "object-fit: contain;" %>
+      </div>
+      <div class="card-body">
+        <p><strong>Title </strong><%= booking.book.title %></p>
+        <p><strong>Author </strong><%= booking.book.author %></p>
+        <p><strong>Return Date </strong><%= booking.end_date %></p>
+        <p><strong>Price per day </strong><%= booking.book.price %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% end %>

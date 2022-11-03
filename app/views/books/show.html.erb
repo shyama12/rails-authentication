@@ -1,0 +1,33 @@
+<div class="container align-self-center">
+  <div class="row p-5 gx-5">
+    <div class="col-sm-6">
+      <div class="book-details d-flex justify-content-start align-items-center">
+        <%= cl_image_tag @book.photo.key, class: "w-50 rounded-4 shadow-sm" %>
+        <div class="book-info">
+          <ul style="list-style: none;">
+            <li><strong>Title: </strong><%= @book.title %></li>
+            <li><strong>Author: </strong><%= @book.author %></li>
+            <li><strong>Owner: </strong><%= @book.user.first_name %> <%= @book.user.last_name %></li>
+            <li><strong>Price per day: </strong>£<%= @book.price %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-5">
+        <strong>Summary: </strong>
+        <p><%= @book.summary %></p>
+      </div>
+    </div>
+    <div class="col-sm-6 bg-white rounded-4 p-5 shadow-sm">
+
+      <%= simple_form_for [@book, @booking] do |f| %>
+        <%= f.input :start_date, as: :date, start_year: Date.today.year,
+                    end_year: Date.today.year + 12,
+                    order: [:day, :month, :year] %>
+        <%= f.input :end_date, as: :date, start_year: Date.today.year,
+                    end_year: Date.today.year + 12,
+                    order: [:day, :month, :year] %>
+        <%= f.submit "Add to Basket", class: "btn btn-dark mt-5 w-100" %>
+      <% end %>
+    </div>
+  </div>
+</div>
