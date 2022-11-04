@@ -1,17 +1,17 @@
-<div class="container m-5">
+<div class="container m-5 align-self-center">
   <h1>Books List</h1>
   <div class="d-flex justify-content-between align-items-center w-400 flex-wrap">
     <% @books.each do |book| %>
-      <%= link_to book_path(book) do%>
-        <div class="card border-0 rounded-4 m-3" style="overflow: hidden; width: 400px;">
-          <%= cl_image_tag book.photo.key, class: "card-img-top" %>
-          <div class="card-body pt-5">
-              <h6 class="mb-0"><%= book.title %></h6>
-              <p class="mb-0"><%= book.author %></p>
-              <p class="mb-0">PPD: £<%= book.price %></p>
-          </div>
+      <div class="card mt-3 bg-transparent border-0" style="width: 400px;">
+        <%= link_to book_path(book) do%>
+            <div class="rounded-4" style="overflow: hidden;"><%= cl_image_tag book.photo.key, class: "card-img-top" %></div>
+        <% end %>
+        <div class="card-body ps-0">
+            <p class="mb-0 fw-bold"><%= book.title %></p>
+            <p class="mb-0"><%= book.author %></p>
+            <p class="mb-0">PPD: £<%= book.price %></p>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
